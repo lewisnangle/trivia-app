@@ -27,31 +27,26 @@ const Clue = (props) => {
         if (answer == correctAnswer){
             setIsCorrectAnswer(true);
             props.incrementScore();
+            console.log("Incrementing score..... " + props.categoryId)
+            props.incrementCategoryScore(props.categoryId);
         }
         event.preventDefault();
     }
-
 
     return (
         <div>
             
             <Card />
             <CardContent>
-
                     <Typography component={'span'} variant={'body2'}>
                     {props.question + ":  "}
-
                     <form  onSubmit = {checkAnswer} noValidate autoComplete="off">
-
                         <TextField onChange = {updateAnswer} id="outlined-basic" label="Answer" variant="outlined" />
-
                     </form>
-
                     <div>
                         {isCorrectAnswer ? "Correct!!"  : "Incorrect."}
                     </div>
                     </Typography>
-
             </CardContent>
         </div>
     );

@@ -9,16 +9,14 @@ function Nav() {
 
     return (
         <div>
-        <nav>
-
-        <Link to="/">
-            Home
-        </Link>
-        <Link to="/categories">
-            Catagories
-        </Link>
-        
-        </nav>
+            <nav>
+                <Link to="/">
+                    Home
+                </Link>
+                <Link to="/categories">
+                    Categories
+                </Link>
+            </nav>
         </div>
     );
     }

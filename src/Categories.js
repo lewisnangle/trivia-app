@@ -3,9 +3,9 @@ import {Link} from 'react-router-dom';
 
 
 
-function Catagory (){
+function Category (){
 
-    const [catagories,setCatagories] = useState([
+    const [categories,setCategories] = useState([
       {id : '',
       title : '',
       clues_count : 0,
@@ -13,28 +13,40 @@ function Catagory (){
     ]);
 
     useEffect(() => {
-      fetchCatagories();
+      fetchCategories();
     },[])
+
+
 
     const initialiseScores = (json) => {
       const array = [];
-      json.map((catagory,index) => (
-        array[index] = {...catagory,score : 0}  
+      json.map((category,index) => (
+        array[index] = {...category,score : 0}  
       ))
       return array;
     }
   
-    const fetchCatagories = async () => {
+    const fetchCategories = async () => {
       const data = await fetch(`http://jservice.io/api/categories?count=30`);
       const json = await data.json();
-      setCatagories(initialiseScores(json));
+      setCategories(initialiseScores(json));
     }
 
+    // setItems(
+    //   items.map((item, index) => {
+    //     item.id === id ? newItem : item
+    //   })
 
-    const incrementCatagoryScore = () => {
-
-
-
+    const incrementCategoryScore = (id) => {
+      const array = [...categories];
+      console.log(array);
+      array.map((category,index)=>{
+        if(category.id == id){
+          array[index] = {...category,score : category.score+1}  
+        }
+      })
+      setCategories(array)
+      console.log("updated cat scores", categories);
     }
 
 
@@ -42,13 +54,22 @@ function Catagory (){
       
         <div>
         {
-            catagories.map(catagory => (
-              <h2 key = {catagory.id}>
-              <Link to = {`/categories/${catagory.id}`}>{catagory.title}</Link>  {catagory.score}
+            categories.map(category => (
+              <h2 key = {category.id}>
+              <Link to = {{
+                pathname:`/categories/${category.id}`,
+                params : {
+                  score : category.score,
+                  increment: incrementCategoryScore,
+                  another : 53
+                }
+              }}>
+                {category.title}
+              </Link>  {category.score}
               </h2>
               ))
           }
-        {console.log(catagories)}
+        {console.log(categories)}
         </div>
     )
 
@@ -56,4 +77,4 @@ function Catagory (){
 
 
 
-export default Catagory;
+export default Category;
