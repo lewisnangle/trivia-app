@@ -23,11 +23,8 @@ const Clue = (props) => {
 
 
     const checkAnswer = (event) => {
-        //TODO: Replace with answer checking function.
         if (answer == correctAnswer){
             setIsCorrectAnswer(true);
-            props.incrementScore();
-            console.log("Incrementing score..... " + props.categoryId)
             props.incrementCategoryScore(props.categoryId);
         }
         event.preventDefault();
