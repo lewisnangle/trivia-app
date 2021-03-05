@@ -2,11 +2,11 @@ import React, {useState,useEffect} from 'react';
 import {Link} from 'react-router-dom';
 
 
-
 function Categories ({incrementCategoryScore,categories}){
+  
 
-    return(
-      
+
+    return(      
         <div>
         {
             categories.map(category => (
@@ -15,7 +15,7 @@ function Categories ({incrementCategoryScore,categories}){
                 pathname:`/categories/${category.id}`,
                 params : {
                   score : category.score,
-                  increment: incrementCategoryScore
+                  increment: incrementCategoryScore,
                 }
               }}>
                 {category.title}

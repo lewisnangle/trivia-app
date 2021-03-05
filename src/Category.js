@@ -9,6 +9,8 @@ const Category = ({match}) => {
 
     const [clues,setClues] = useState([]);
     const [score,setScore] = useState(location.params.score);
+    const [counter, setCounter] = useState(60); //1 min for each category
+    
 
     useEffect(() => {
       fetchClues();
@@ -26,9 +28,17 @@ const Category = ({match}) => {
       console.log("incremented local score")
     }
 
+  
+    useEffect(() => {
+        counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
+      }, [counter]);
+
     return (
         <div>
-            Score : {score}
+          <div>
+            <h2>Time left: {counter}</h2>
+            <h2>Score : {score}</h2>
+          </div>
             {console.log(clues)}
             {clues.map(c=>(
                 <Clue 
@@ -39,6 +49,7 @@ const Category = ({match}) => {
                 incrementLocalScore = {incrementLocalScore}
                 incrementCategoryScore = {location.params.increment}
                 categoryId = {c.category_id}
+                disabled={counter === 0 ? true : false}
                 />
             ))} 
 

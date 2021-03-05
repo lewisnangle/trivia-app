@@ -32,14 +32,13 @@ const Clue = (props) => {
     }
 
     return (
-        <div>
-            
+        <div>            
             <Card />
             <CardContent>
                     <Typography component={'span'} variant={'body2'}>
                     {props.question + ":  "}
                     <form  onSubmit = {checkAnswer} noValidate autoComplete="off">
-                        <TextField onChange = {updateAnswer} id="outlined-basic" label="Answer" variant="outlined" />
+                        <TextField onChange = {updateAnswer} id="outlined-basic" label="Answer" variant="outlined" disabled = {props.disabled} />
                     </form>
                     <div>
                         {isCorrectAnswer ? "Correct!!"  : "Incorrect."}
