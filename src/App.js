@@ -11,7 +11,8 @@ function App() {
     {id : '',
     title : '',
     clues_count : 0,
-    score : 0}
+    score : 0,
+    complete : false}
   ]);
 
   useEffect(() => {
@@ -22,7 +23,7 @@ function App() {
   const initialiseScores = (json) => {
     const array = [];
     json.map((category,index) => (
-      array[index] = {...category,score : 0}  
+      array[index] = {...category,score : 0,complete : false}  
     ))
     return array;
   }
@@ -44,6 +45,17 @@ function App() {
     setCategories(array);
   }
 
+  const setCategoryToComplete = (id) => {
+    const array = [...categories];
+    console.log(array);
+    const objectToIncrement = array.find(category => category.id == id);
+    const indexOfObjectToIncrement = array.indexOf(objectToIncrement);
+
+    array[indexOfObjectToIncrement].complete = true;
+
+    setCategories(array);
+  }
+
 
 
   const Home = () => {
@@ -56,6 +68,8 @@ function App() {
   
   }
 
+  console.log(categories);
+
   return (
 
       <Router>
@@ -65,7 +79,7 @@ function App() {
         <Switch>
         <Route path = "/" exact component = {Home}/>
         <Route path = "/categories" exact render = {() => (
-          <Categories categories = {categories} incrementCategoryScore = {incrementCategoryScore}/>)}/>
+          <Categories categories = {categories} incrementCategoryScore = {incrementCategoryScore} setCategoryToComplete = {setCategoryToComplete}/>)}/>
         <Route path = "/categories/:id" component ={Category}/>
         </Switch>
         </div>

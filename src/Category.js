@@ -7,9 +7,11 @@ const Category = ({match}) => {
 
     const location = useLocation();
 
+    const timeInSeconds = location.params.complete ? 0 : 60;
+
     const [clues,setClues] = useState([]);
     const [score,setScore] = useState(location.params.score);
-    const [counter, setCounter] = useState(60); //1 min for each category
+    const [counter, setCounter] = useState(timeInSeconds); //1 min for each category
     
 
     useEffect(() => {
@@ -31,6 +33,7 @@ const Category = ({match}) => {
   
     useEffect(() => {
         counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
+        if (counter == 0){ location.params.setCategoryToComplete(match.params.id)}
       }, [counter]);
 
     return (
@@ -49,7 +52,7 @@ const Category = ({match}) => {
                 incrementLocalScore = {incrementLocalScore}
                 incrementCategoryScore = {location.params.increment}
                 categoryId = {c.category_id}
-                disabled={counter === 0 ? true : false}
+                disabled={(counter === 0 || location.params.complete) ? true : false}
                 />
             ))} 
 
