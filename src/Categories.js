@@ -5,9 +5,6 @@ import {Link} from 'react-router-dom';
 
 function Categories ({incrementCategoryScore,categories}){
 
-    console.log(incrementCategoryScore);
-    console.log(categories);
-
     return(
       
         <div>
@@ -26,7 +23,6 @@ function Categories ({incrementCategoryScore,categories}){
               </h2>
               ))
           }
-        {console.log(categories)}
         </div>
     )
 

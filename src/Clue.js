@@ -26,6 +26,7 @@ const Clue = (props) => {
         if (answer == correctAnswer){
             setIsCorrectAnswer(true);
             props.incrementCategoryScore(props.categoryId);
+            props.incrementLocalScore();
         }
         event.preventDefault();
     }

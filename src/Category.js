@@ -8,7 +8,7 @@ const Category = ({match}) => {
     const location = useLocation();
 
     const [clues,setClues] = useState([]);
-    //const [score,setScore] = useState(location.params.score);
+    const [score,setScore] = useState(location.params.score);
 
     useEffect(() => {
       fetchClues();
@@ -21,9 +21,14 @@ const Category = ({match}) => {
       setClues(json);
     }
 
+    const incrementLocalScore = () => {
+      setScore(score+1);
+      console.log("incremented local score")
+    }
+
     return (
         <div>
-            Score : {location.params.score}
+            Score : {score}
             {console.log(clues)}
             {clues.map(c=>(
                 <Clue 
@@ -31,6 +36,7 @@ const Category = ({match}) => {
                 question = {c.question} 
                 id={c.id} 
                 answer = {c.answer} 
+                incrementLocalScore = {incrementLocalScore}
                 incrementCategoryScore = {location.params.increment}
                 categoryId = {c.category_id}
                 />

@@ -36,13 +36,12 @@ function App() {
   const incrementCategoryScore = (id) => {
     const array = [...categories];
     console.log(array);
-    array.map((category,index)=>{
-      if(category.id == id){
-        array[index] = {...category,score : category.score+1}  
-      }
-    })
-    setCategories(array)
-    console.log("updated cat scores", categories);
+    const objectToIncrement = array.find(category => category.id == id);
+    const indexOfObjectToIncrement = array.indexOf(objectToIncrement);
+
+    array[indexOfObjectToIncrement].score = array[indexOfObjectToIncrement].score + 1;
+
+    setCategories(array);
   }
 
 
