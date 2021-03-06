@@ -29,7 +29,7 @@ function App() {
   }
 
   const fetchCategories = async () => {
-    const data = await fetch(`http://jservice.io/api/categories?count=30`);
+    const data = await fetch(`http://jservice.io/api/categories?count=10`);
     const json = await data.json();
     setCategories(initialiseScores(json));
   }

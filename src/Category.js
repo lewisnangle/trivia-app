@@ -1,6 +1,7 @@
 import React, {useState,useEffect} from 'react';
 import Clue from './Clue.js';
 import {useLocation} from 'react-router';
+import Button from '@material-ui/core/Button';
 
 
 const Category = ({match}) => {
@@ -21,19 +22,21 @@ const Category = ({match}) => {
     const fetchClues = async () => {
       const data = await fetch(`http://jservice.io/api/clues?category=${match.params.id}`);
       const json = await data.json();
-      console.log("Questions: ", json)
       setClues(json);
     }
 
     const incrementLocalScore = () => {
       setScore(score+1);
-      console.log("incremented local score")
+    }
+
+    const markCategoryComplete = (categoryId) => {
+      location.params.setCategoryToComplete(categoryId);
     }
 
   
     useEffect(() => {
         counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
-        if (counter == 0){ location.params.setCategoryToComplete(match.params.id)}
+        if (counter == 0){ markCategoryComplete(match.params.id)}
       }, [counter]);
 
     return (
@@ -55,6 +58,10 @@ const Category = ({match}) => {
                 disabled={(counter === 0 || location.params.complete) ? true : false}
                 />
             ))} 
+
+            <Button onClick={()=>{ markCategoryComplete(match.params.id)}} variant="contained" color="primary">
+              Mark As Complete
+            </Button>
 
         </div>
     );
