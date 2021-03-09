@@ -3,11 +3,14 @@
 }
 
 nav{
+  border-radius: 10px;
+  box-shadow: 0px 5px 20px rbg(71,71,71);
+  margin: 20px;
   display:flex;
   justify-content: space-around;
   align-items: center;
   min-height: 10vh;
-  background: rgb(73,79,82);
+  background: #7A93AC;
   color: white;
 }
 
@@ -28,7 +31,12 @@ nav{
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  background:white;
+  background:#7A93AC;
   align-items: center;
   min-width: 40%;
+}
+
+.text {
+  text-decoration: none;
+  color: white;
 }

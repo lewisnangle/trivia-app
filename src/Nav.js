@@ -11,10 +11,10 @@ function Nav() {
         <div>
             <nav>
                 <Link to="/">
-                    Home
+                    <h3 className = 'text'>Home</h3>
                 </Link>
                 <Link to="/categories">
-                    Categories
+                    <h3 className='text'>Categories</h3>
                 </Link>
             </nav>
         </div>
