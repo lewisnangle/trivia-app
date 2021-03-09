@@ -62,7 +62,7 @@ function App() {
 
     return(
       <div>
-        <h2>Home</h2>
+        <h1>Previous Scores:</h1>
       </div>
     )
   
