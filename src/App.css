@@ -4,7 +4,7 @@
 
 nav{
   border-radius: 10px;
-  box-shadow: 0px 5px 20px rbg(71,71,71);
+  box-shadow: #767676 5px 5px 5px 5px;
   margin: 20px;
   display:flex;
   justify-content: space-around;
@@ -26,7 +26,6 @@ nav{
 
 .category {
   border-radius: 10px;
-  box-shadow: 0px 5px 20px rbg(71,71,71);
   margin: 20px;
   display: flex;
   flex-direction: column;
@@ -34,9 +33,19 @@ nav{
   background:#7A93AC;
   align-items: center;
   min-width: 40%;
+  
+  box-shadow: #767676 5px 5px 5px 5px;
+  border-radius: 3px;
+  border-top: 1px solid rgb(222, 224, 227);
+  cursor: pointer;
+  display: flex;
+  margin: 0px;
+  padding: 12px 16px;
+  position: relative;
+
 }
 
 .text {
   text-decoration: none;
-  color: white;
+  color: rgb(66, 61, 61);
 }
